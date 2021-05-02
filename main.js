@@ -19,7 +19,12 @@ var admins = [
     '593477982761517085',
     '471875491951935490',
     '392866251149410305',
-    '301847661181665280'
+    '301847661181665280',
+    '659487529896116225',
+    '548760440444944386'
+    
+    
+    
 ];
 
 var memes = [
@@ -48,7 +53,10 @@ var memes = [
     'https://cdn.discordapp.com/attachments/826147014025674772/834872098849292348/Screenshot_2021-04-22_112155.png',
     'https://cdn.discordapp.com/attachments/803465423848603649/803688169283387452/unknown.png',
     'https://cdn.discordapp.com/attachments/811318948620009533/834975194539622460/unknown.png',
-    'https://cdn.discordapp.com/attachments/811318948620009533/835231836987719771/unknown.png'
+    'https://cdn.discordapp.com/attachments/811318948620009533/835231836987719771/unknown.png',
+    'https://cdn.discordapp.com/attachments/818324491574575106/837114237834756167/image0.png',
+    'https://cdn.discordapp.com/attachments/811318948620009533/837036392936243260/Screenshot_20210427-1801582.png',
+    'https://cdn.discordapp.com/attachments/811318948620009533/837039638039363616/Screenshot_2021-04-28_115614.png'
 ];
 
 var nukeSplashes = [
@@ -105,8 +113,8 @@ client.on("ready", () => {
     client.user.setPresence({
         status: 'available',  // You can show online, idle... Do not disturb is dnd
         activity: {
-            //name: "Developed by Shaggy, HiHi, and Apg",  // The message shown
-            name: "Happy birthday Mafira!!!",
+            name: "Developed by Shaggy, HiHi, and Apg",  // The message shown
+            //name: "Happy birthday Mafira!!!",
             type: "PLAYING" // PLAYING, WATCHING, LISTENING, STREAMING,
         }
     });
@@ -235,6 +243,7 @@ function jailored(jailorIsMe) {
 }
 
 function cleanJail() {
+    if (!jailed) return;
     cell.send(jailed.tag + ' is no longer jailed.');
     jailorChat.send(jailed.tag + ' is no longer jailed.');
     // cell.updateOverwrite(jailed, {
@@ -244,6 +253,7 @@ function cleanJail() {
 }
 
 function cleanJailor() {
+    if (!jailor) return;
     jailorChat.send(jailor.tag + ' is no longer jailor.');
     // jailorChat.updateOverwrite(jailor, {
     //     VIEW_CHANNEL: false
@@ -384,9 +394,15 @@ function setupRoleInfo() {
     roleDescription['potion master'] = 'An individual mastered in potions.';
     roleFaction['potion master'] = 'neutral';
     rolePassive['potion master'] = '__[Coagulate] __ - \nYou are redirect immune and roleblock immune.';
-    roleNight['potion master'] = '__[Potion of Healing]__ - \nHeal a target (not yourself). \n __[Potion of Wisdom]__  - \nCheck a target (not yourself)\n • If you target a Guardian Angel or a Headhunter, you also learn their target.\n • You can only use this ability twice.\n __[Potion of Aggression]__ -\nAttack a target (not yourself).\n • You can only use this ability twice.\n __[Potion of Disruption]__ - \nRoleblock a target (not yourself).\n • You can only use this ability twice.';
+    roleNight['potion master'] = '__[Potion of Healing]__ - \nHeal a target (not yourself). \n__[Potion of Wisdom]__  - \nCheck a target (not yourself)\n • If you target a Guardian Angel or a Headhunter, you also learn their target.\n • You can only use this ability twice.\n__[Potion of Aggression]__ -\nAttack a target (not yourself).\n • You can only use this ability twice.\n__[Potion of Disruption]__ - \nRoleblock a target (not yourself).\n • You can only use this ability twice.';
     roleDay['potion master'] = '__ [Potion of Survival] __ - \nBecome night attack immune tonight.\n • You can only use this ability 3 times.';
     roleWinCondition['potion master'] = '`Win Condition: See yourself survive until the game ends.`';
+    
+    roleName['headhunter'] = '**Headhunter/Executioner (Investigative)**';
+    roleDescription['headhunter'] = 'A vengeful person which has a strong grudge against a certain Town member.';
+    roleFaction['headhunter'] = 'neutral';
+    rolePassive['headhunter'] = '__[Grudge] __ - \nYou are randomly assigned a Town member at the start of the game.\n • You will know your target’s role.\n • Your target cannot be a Jailor, Veteran, Builder, Mayor, or Medium.\n • If your target dies by any means other than lynching, you will become a Fool without __[Jack-in-a-box]__  and __[Frame]__.\n__ [Resolve]__  - \nYou are night attack immune.';
+    roleWinCondition['headhunter'] = '`Win Condition: See your target lynched.`';
 
     roleName[''] = '';
     roleDescription[''] = '';
@@ -423,7 +439,7 @@ function setupRoleInfo() {
     roleDay['enchantress'] = '__[Curse]__ - \nCurse a target (not yourself). \n__[Curse Transfer]__ - \nMove a curse from a cursed player to an uncursed player.\n__[Puppet Magic]__ - \nForce someone to vote for someone else.\n • Both players are unable to vote for the rest of the day.\n • You can only use this ability twice.';
     roleWinCondition['enchantress'] = '`Win condition: Kill all Town and Werewolf roles, or be one of the last four players.`';
 
-    roleName[''] = '';
+    roleName['headhunter'] = '';
     roleDescription[''] = '';
     roleFaction[''] = '';
     rolePassive[''] = '';
