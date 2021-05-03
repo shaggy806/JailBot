@@ -22,9 +22,9 @@ var admins = [
     '301847661181665280',
     '659487529896116225',
     '548760440444944386'
-    
-    
-    
+
+
+
 ];
 
 var memes = [
@@ -56,7 +56,9 @@ var memes = [
     'https://cdn.discordapp.com/attachments/811318948620009533/835231836987719771/unknown.png',
     'https://cdn.discordapp.com/attachments/818324491574575106/837114237834756167/image0.png',
     'https://cdn.discordapp.com/attachments/811318948620009533/837036392936243260/Screenshot_20210427-1801582.png',
-    'https://cdn.discordapp.com/attachments/811318948620009533/837039638039363616/Screenshot_2021-04-28_115614.png'
+    'https://cdn.discordapp.com/attachments/811318948620009533/837039638039363616/Screenshot_2021-04-28_115614.png',
+    'https://cdn.discordapp.com/attachments/811318948620009533/838625175158915132/Screenshot_20210427-1801582.png',
+    'https://cdn.discordapp.com/attachments/811318948620009533/838625227318886450/image0.png'
 ];
 
 var nukeSplashes = [
@@ -74,7 +76,9 @@ var nukeSplashes = [
     'Give Shaggy owner and I will consider',
     'In your dreams',
     'The chances of me nuking the server are equal to the chances of you successfully asking your crush out',
-    'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    'Go to Brazil!',
+    '<:sealhmm:811394376047001621>'
 ];
 
 var tipSplashes = [
@@ -152,9 +156,12 @@ client.on('message', message => {
             break;
         case 'roleinfo':
             roleInfo(message, args.join(' '));
-            break
+            break;
+        case 'help':
+            message.channel.send('```Jailbot command list\nprefix is w!\n\neveryone can access:\nw!nuke - nuke the server\nw!meme - shows a meme about werewolf\nw!roleinfo - shows the information of a role, the current role document in the bot is Fandom V2 Doc.\n\ngame host only:\nw!jail <ID> - jail a person\nw!jailor <ID> - set a person to jailor\nw!cleanjail - kick the jailed person\nw!cleanjailor - demote the jailor\nw!setjail <ID> - set a jailor chat\nw!setcell <ID> - set a jailed chat\n\nif you need additional help feel free to join our server or DM Beako```')
+            break;
         default:
-            break
+            break;
     }
 
     if (!admins.includes(message.author.id)) return;
@@ -345,12 +352,22 @@ function setupRoleInfo() {
     roleFaction['psychic'] = 'town';
     rolePassive['psychic'] = '__[Corruption]__ - \nRevealed Mayors cannot appear in your visions.\n__[Disruption]__ - \nYou will not receive a vision if you are roleblocked, jailed, or fortified.\n__[Future Vision]__ - \nEvery odd-numbered night (1, 3, 5...), you will receive 3 possible evildoers.\n • At least one is a Werewolf member or a Neutral Killing role.\n__[Fortune Telling]__ - \nEvery even-numbered night (2, 4, 6...), you will receive 2 possible Town members.\n • At least one is a Town member. ';
 
+    roleName['shaggy'] = '**Shaggy (Unique)**';
+    roleDescription['shaggy'] = 'The madman who programmed this bot.';
+    roleFaction['shaggy'] = 'town';
+    rolePassive['shaggy'] = '__[Lord of the Sealhmms]__ - \n<:sealhmm:811394376047001621>'
+
+    roleName['hihi'] = '**Hihi/Beatrice (Unique)**';
+    roleDescription['hihi'] = 'She\'s the owner of this server.';
+    roleFaction['hihi'] = 'neutral';
+    roleDay['hihi'] = '__[Nuke]__ - \nNuke the server.\n - You can only nuke a server once.'
+    roleWinCondition['hihi'] = 'Nuke the server';
+
     roleName[''] = '';
     roleDescription[''] = '';
     roleFaction[''] = '';
     rolePassive[''] = '';
     roleNight[''] = '';
-
     roleDay[''] = '';
     roleWinCondition[''] = '';
 
@@ -364,20 +381,63 @@ function setupRoleInfo() {
     rolePassive['wolf apprentice'] = '__[Following Orders]__ - \nYou always follow the Alphawolf’s attack orders. \n__[Royalty]__ - \nYou are the first Werewolf promoted to be an Alphawolf. \n • If both the original Alphawolf and you die, a random Werewolf is promoted to be an Alphawolf.\n • No Werewolf is ever promoted to be a Wolf Apprentice.';
     roleNight['wolf apprentice'] = '__[Night Hunt]__ - \nAttack a target (not yourself). \n • You can only use this ability if the Alphawolf is jailed or fortified. \n__[2-for-1]__ - \nAttack two targets (not yourself). \n • If you are redirected, only your first target is redirected. \n • You can only use this ability if the Alphawolf is jailed or fortified. \n • This ability can only be used once per game.';
 
-
     roleName['wolfcub'] = '**Wolfcub (Killing) [Unique]**';
     roleDescription['wolfcub'] = 'The wolfchild who seeks out kills.';
     roleFaction['wolfcub'] = 'wolf';
     rolePassive['wolfcub'] = '__[Vengeful Spirit]__ - \nUpon your death, you drag someone down with you. \n • This is an unpreventable death. \n • This ability is disabled if you die while using __[Berserker Call]__.';
     roleNight['wolfcub'] = '__[Berserker Call]__ - \nTarget someone (not a Werewolf). \n • You redirect your target to yourself. \n • If your target kills you, you drag your target down with you. \n • This is an unpreventable death. \n • This ability bypasses redirect immunity. \n • You can only use this ability twice.';
 
-    roleName[''] = '';
-    roleDescription[''] = '';
-    roleFaction[''] = '';
-    rolePassive[''] = '';
-    roleNight[''] = '';
-    roleDay[''] = '';
-    roleWinCondition[''] = '';
+    roleName['consigliere wolf'] = '**Consigliere Wolf (Investigative)**';
+    roleDescription['consigliere wolf'] = 'A Werewolf who specializes in learning the roles of people.';
+    roleFaction['consigliere wolf'] = 'wolf';
+    roleNight['consigliere wolf'] = '__[Analyze]__ - \nTarget two people (not Werewolf members). \n • If they are compatible via Cupid compatibility rules, you learn their roles. \n • This ability does not count as a visit.\n__[Forgery]__ - \nTarget someone (not a Werewolf). \n • If your target dies tonight, you forge your target’s last will. \n • You can only use this ability twice.';
+
+    roleName['blackmailer wolf'] = '**Blackmailer Wolf (Investigative)**';
+    roleDescription['blackmailer wolf'] = 'A Werewolf who specializes in threatening people with secrets.';
+    roleFaction['blackmailer wolf'] = 'wolf';
+    rolePassive['blackmailer wolf'] = '__[Quiet Feet]__ - \nYour abilities do not count as visits.';
+    roleNight['blackmailer wolf'] = '__[Blackmail]__ - \nBlackmail a target (not a Werewolf). \n • Your target is muted for the next day. \n__[Gossip]__ - \nLearn your target’s ability feedback.';
+    roleDay['blackmailer wolf'] = '__[Strange Disappearance]__ - \nWhen the night begins, the Jailor’s prisoner is revealed to you. \n • You can only use this ability 3 times.';
+
+    roleName['wolf mystic'] = '**Wolf Mystic (Investigative) [Unique]**';
+    roleDescription['wolf mystic'] = 'A wolf who utilizes psychic powers to help the Werewolf members.';
+    roleFaction['wolf mystic'] = 'wolf';
+    rolePassive['wolf mystic'] = '__[Tunnel Vision]__ - \nAt the start of each night, you see 3 existing roles in the game. \n • These roles cannot be Jailor or Werewolf members. \n • Role results cannot overlap.\n__[Stealth]__ - \nYour actions cannot be detected by Spies. \n__[Determination]__ - \nDead Werewolf members can still communicate. \n • This ability is removed upon your death.';
+    roleNight['wolf mystic'] = '__[Misguided]__ - \nMisguide on a target (not yourself). \n • If that target is lynched the next day, their role is revealed as a role with a last will of your choice. \n • You are informed of their real role. \n • You can only use this ability twice.';
+
+    roleName['janitor wolf'] = '**Janitor Wolf (Supportive) [Unique]**';
+    roleDescription['janitor wolf'] = 'A Werewolf who specializes in erasing targets’ traces.';
+    roleFaction['janitor wolf'] = 'wolf';
+    rolePassive['janitor wolf'] = '__[Forewarn]__ - \nIf there is a Medium or a Retributionist in the game, you are notified about it.';
+    roleNight['janitor wolf'] = '__[Clean]__ - \nThe Werewolf kill target(s)are cleaned tonight. \n • Their role(s) and last will(s) are revealed to the Werewolf members. \n • This ability does not count as a visit. \n • You can only use this ability 3 times.';
+
+    roleName['alcoholic wolf'] = '**Alcoholic Wolf (Supportive)**';
+    roleDescription['alcoholic wolf'] = 'A Werewolf who specializes in making people drunk.';
+    roleFaction['alcoholic wolf'] = 'wolf';
+    rolePassive['alcoholic wolf'] = '__[I am the liquor]__ - \nYou are redirect immune and roleblock immune.';
+    roleNight['alcoholic wolf'] = '__[Debauchery]__ - \nRedirect a target (not a Werewolf) to another target. \n •They know they were redirected and who they were redirected to. \n • If you redirect a target to yourself, you gain night attack immunity against your target. \n • You visit your target, but not the person you redirected your target to. \n__[Drunken]__ - \nRedirect your target(not a Werewolf) into themselves. \n • The target\'s night attack immunity is removed for this night. \n • This ability bypasses redirection immunity. \n • You can only use this ability twice.';
+
+    roleName['butler wolf'] = '**Butler Wolf (Supportive)**';
+    roleDescription['butler wolf'] = 'A Werewolf who specializes in distracting people.';
+    roleFaction['butler wolf'] = 'wolf';
+    rolePassive['butler wolf'] = '__[Deitiful]__ - \nYou are redirect immune and roleblock immune.';
+    roleNight['butler wolf'] = '__[Serve Wine]__ - \nRoleblock a target (not a Werewolf). \n__[Happy Hour]__ - \nRoleblock a target (not a Werewolf). \n • The target\'s night attack immunity is removed for tonight. \n • This ability bypasses roleblock immunity. \n • You can only use this ability twice.';
+
+    roleName['necromancer wolf'] = '**Necromancer Wolf (Supportive) [Unique]**';
+    roleDescription['necromancer wolf'] = 'A wolf who specializes in messing with dead people.';
+    roleFaction['necromancer wolf'] = 'wolf';
+    rolePassive['necromancer wolf'] = '__[Sharpmind]__ - \nYou are redirect immune. \n__[Stealth]__ - \nYour actions cannot be detected by a Spy.';
+    roleNight['necromancer wolf'] = '__[Reanimate]__ - \nReanimate a dead player. \n • You are able to use your target’s night ability if they have one. \n • If your target ran out of charges for their ability before or on their death, your reanimation will fail. \n • You do not visit your reanimated player, but your reanimated player will visit your other target (if applicable). \n • Once you reanimate a dead player member once, their corpse rots and you can no longer reanimate it. \n • You cannot reanimate cleaned people, Jailors, Veterans, Builders, Mayors, Mediums, Vigilantes who committed suicide, Alphawolves, Wolf Apprentices, Wolfcubs, Guardian Angels, Headhunters, Fools, Amnesiacs, or Pirates. \n__[Defile]__ - \nDefile a target (not a Werewolf). \nIf that target dies tonight, their role is shown as your chosen role. \n • You learn the target’s real role. \n • You remove the target’s last will. \n • You can only use this ability twice.';
+
+    roleName['wolf knight'] = '**Wolf Knight (Protective) [Unique]**';
+    roleDescription['wolf knight'] = 'A wolf who specializes in making sure the targets of wolves die.';
+    roleFaction['wolf knight'] = 'wolf';
+    roleNight['wolf knight'] = '__[Frenzy]__ - \nThe attacking Werewolf is guaranteed to kill their targets tonight. \n • You can only use this ability twice. \n__[Protection]__ - \nRoleblock everyone who visits Werewolf members tonight. \n • You can only use this ability twice.';
+
+    roleName['stalker wolf'] = '**Stalker Wolf (Investigative) [Unique]**';
+    roleDescription['stalker wolf'] = 'A wolf who specializes in sneaking around the town at night.';
+    roleFaction['stalker wolf'] = 'wolf';
+    roleNight['stalker wolf'] = '__[Quiet Night]__ - \nTonight, Werewolf members do not visit. \n • Werewolf attacks also bypass night attack immunity. \n • You can only use this ability twice.\n__[Stalk]__ - \nTarget someone (not a Werewolf). \n • You will know everyone who visits your target tonight. \n • You will know everyone who is visited by your target tonight.';
 
 
     //NEUTRAL
@@ -397,12 +457,26 @@ function setupRoleInfo() {
     roleNight['potion master'] = '__[Potion of Healing]__ - \nHeal a target (not yourself). \n__[Potion of Wisdom]__  - \nCheck a target (not yourself)\n • If you target a Guardian Angel or a Headhunter, you also learn their target.\n • You can only use this ability twice.\n__[Potion of Aggression]__ -\nAttack a target (not yourself).\n • You can only use this ability twice.\n__[Potion of Disruption]__ - \nRoleblock a target (not yourself).\n • You can only use this ability twice.';
     roleDay['potion master'] = '__ [Potion of Survival] __ - \nBecome night attack immune tonight.\n • You can only use this ability 3 times.';
     roleWinCondition['potion master'] = '`Win Condition: See yourself survive until the game ends.`';
-    
+
     roleName['headhunter'] = '**Headhunter/Executioner (Investigative)**';
     roleDescription['headhunter'] = 'A vengeful person which has a strong grudge against a certain Town member.';
     roleFaction['headhunter'] = 'neutral';
     rolePassive['headhunter'] = '__[Grudge] __ - \nYou are randomly assigned a Town member at the start of the game.\n • You will know your target’s role.\n • Your target cannot be a Jailor, Veteran, Builder, Mayor, or Medium.\n • If your target dies by any means other than lynching, you will become a Fool without __[Jack-in-a-box]__  and __[Frame]__.\n__ [Resolve]__  - \nYou are night attack immune.';
     roleWinCondition['headhunter'] = '`Win Condition: See your target lynched.`';
+
+    roleName['inquisitor'] = '**Inquisitor (Investigative) [Unique]**';
+    roleDescription['inquisitor'] = 'A ruthless hunter on the quest to see the heathens killed.';
+    roleFaction['inquisitor'] = 'neutral';
+    rolePassive['inquisitor'] = '__[Heathen Hunting]__ - \n3 people are randomly assigned as Heathens at the start of the game.\n • Jailor, Mayor, Medium, Veteran, Alphawolf and Neutral roles cannot be Heathens. \n • At least one Werewolf member is a Heathen.\n • Heathens will be notified that they are Heathens. \n • You will be notified about the starting roles of Heathens.\n • If a Heathen dies, you will be notified that they died.\n • Once you win the game, your abilities will be disabled.';
+    roleNight['inquisitor'] = '__[Track]__ - \nTarget someone. You will learn your target’s role.\n • If the target is a Heathen, you will be notified as well.\n__[Ruthless Efficiency]__ - \nAttack your target. This attack ignores night attack immunity, protection and healing.\n • You can only use this ability 3 times.';
+    roleWinCondition['inquisitor'] = '`Win Condition: See all Heathens killed while you are alive.`';
+
+    roleName['vampire'] = '**Vampire (Supportive)**';
+    roleDescription['vampire'] = 'A mysterious entity who endlessly thirsts for blood.';
+    roleFaction['vampire'] = 'neutral';
+    rolePassive['vampire'] = '__[Nocturnal Instinct]__ - \nYou have access to #vampire-chat.';
+    roleNight['vampire'] = '__[Bite]__ - \nBite a target (not a Vampire).\nThis ability can only be performed by the youngest Vampire.\nOn night one, the youngest Vampire is randomized.\n • If your target is a Town member, they are converted to a Vampire.\n• If four Vampires are alive, this ability attacks them.\n• If your target is a convert immune Town member, they are attacked.\n • If your target is a Neutral role, they are attacked.\n • This ability can be healed and protected against.\n• You can only use this ability every other night.\n • If your target is a Town member who dies tonight, this timer is null.\n• If your target is a Neutral role or you are roleblocked, this timer applies.';
+    roleWinCondition['vampire'] = '`Win condition: See the Town members and Neutral Killing eliminated.`';
 
     roleName[''] = '';
     roleDescription[''] = '';
@@ -439,18 +513,14 @@ function setupRoleInfo() {
     roleDay['enchantress'] = '__[Curse]__ - \nCurse a target (not yourself). \n__[Curse Transfer]__ - \nMove a curse from a cursed player to an uncursed player.\n__[Puppet Magic]__ - \nForce someone to vote for someone else.\n • Both players are unable to vote for the rest of the day.\n • You can only use this ability twice.';
     roleWinCondition['enchantress'] = '`Win condition: Kill all Town and Werewolf roles, or be one of the last four players.`';
 
-    roleName['headhunter'] = '';
-    roleDescription[''] = '';
-    roleFaction[''] = '';
-    rolePassive[''] = '';
-    roleNight[''] = '';
-    roleDay[''] = '';
-    roleWinCondition[''] = '';
-
 }
 
 
 function roleInfo(message, n) {
+ if (n == 'vampire hunter') {
+        message.channel.send('https://media.discordapp.net/attachments/798464321775861760/838564330341007447/unknown.png');
+        return;
+    }
     if (roleName[n]) {
         const embed = new Discord.MessageEmbed()
             .setTitle(roleName[n])
@@ -480,9 +550,9 @@ function roleInfo(message, n) {
             embed.addField('**Win Condition:**', roleWinCondition[n]);
         }
 
-
         message.channel.send(embed);
     } else {
+        console.log(roleName[n])
         message.channel.send('Either that role doesn\'t exist, or it hasn\'t been added to the bot yet');
     }
 }
