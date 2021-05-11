@@ -78,7 +78,8 @@ var nukeSplashes = [
     'The chances of me nuking the server are equal to the chances of you successfully asking your crush out',
     'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     'Go to Brazil!',
-    '<:sealhmm:811394376047001621>'
+    '<:sealhmm:811394376047001621>',
+    'Tell Reddid to add that feature to catbot.'
 ];
 
 var tipSplashes = [
@@ -155,7 +156,7 @@ client.on('message', message => {
             message.channel.send(tipSplashes[Math.floor(Math.random() * tipSplashes.length)]);
             break;
         case 'roleinfo':
-            roleInfo(message, args.join(' '));
+            roleInfo(message, args.join(' ').toLowerCase());
             break;
         case 'help':
             message.channel.send('```Jailbot command list\nprefix is w!\n\neveryone can access:\nw!nuke - nuke the server\nw!meme - shows a meme about werewolf\nw!roleinfo - shows the information of a role, the current role document in the bot is Fandom V2 Doc.\n\ngame host only:\nw!jail <ID> - jail a person\nw!jailor <ID> - set a person to jailor\nw!cleanjail - kick the jailed person\nw!cleanjailor - demote the jailor\nw!setjail <ID> - set a jailor chat\nw!setcell <ID> - set a jailed chat\n\nif you need additional help feel free to join our server or DM Beako```')
@@ -200,35 +201,10 @@ client.on('message', message => {
         case 'setcell':
             setCell(message, args);
             break;
-        case 'collect':
-            collect(message, args[0]);
-            break;
         default:
             break;
     }
 });
-
-
-function collect(mass, amount) {
-    /*
-    mass.channel.messages.fetch({ limit: amount })
-        .then(async messages => {
-            console.log(`Received ${messages.size} messages`)
-            console.log(`${messages.size} procuradas.`);
-
-            let finalArray = [];
-
-            const putInArray = async (data) => finalArray.push(data);
-
-            for (const message of messages.array().reverse()) await message.delete()putInArray(message.content);
-
-            console.log(finalArray);
-            console.log(finalArray.length);
-
-        })
-        .catch(console.error)
-            */
-}
 
 function jail(target) {
 
@@ -363,6 +339,18 @@ function setupRoleInfo() {
     roleDay['hihi'] = '__[Nuke]__ - \nNuke the server.\n - You can only nuke a server once.'
     roleWinCondition['hihi'] = 'Nuke the server';
 
+    roleName['gazen'] = '**Gazen (Neutral Killing)**';
+    roleDescription['gazen'] = 'Milk';
+    roleFaction['gazen'] = 'neutral killing';
+    roleNight['gazen'] = '__[Milk Explosion]__ - \nKill a player\n • This is an unpreventable death\n__[Milk Abuse]__ - \nBlast every player that visits you\n__[Milk Gore]__ - \nIf two players visit you make them go on a rampage, killing two other players.';
+    roleWinCondition['gazen'] = 'Be in the last 4 players.';
+
+    roleName['mafira'] = '**Mafira1071 [Unique]**';
+    roleDescription['mafira'] = 'A troller who is great at imagining fake scenarios.';
+    roleFaction['mafira'] = 'neutral killing';
+    roleDay['mafira'] = '__[Troll]__ - \nMake fun of someone\'s stupid comment.\n • This counts as an attack';
+    roleWinCondition['mafira'] = 'Troll at least 3 people';
+
     roleName[''] = '';
     roleDescription[''] = '';
     roleFaction[''] = '';
@@ -370,7 +358,7 @@ function setupRoleInfo() {
     roleNight[''] = '';
     roleDay[''] = '';
     roleWinCondition[''] = '';
-
+    
 
     //WOLVES
 
