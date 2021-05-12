@@ -85,7 +85,7 @@ var nukeSplashes = [
 var tipSplashes = [
     'Always write a will. Your will should at least include your actions so other town members will have an easier time catching the wolf.',
     'As a Jailor, do not small talk to the jailed, this will give away your personal identity.',
-    'Vigilante is easy fake claim, you should always leave a death note when you shoot someone so you can confirm yourself.',
+    'Vigilante and Veteran are easy fake claims, you should always leave a death note when you shoot someone so you can confirm yourself.',
     'TI should claim first thing in the morning, you will be more believable if you claim faster.',
     'Always fill in your role list when you see someone claim.',
     'If you see majority is reached in few seconds, you should be aware of the wolf in the vote.',
@@ -95,7 +95,9 @@ var tipSplashes = [
     'If you think something is fishy, double check the role list, you might find something in there.',
     'Do not overthink as a werewolves or town player, the situation might be very simple.',
     'Try and only use facts to confirm other facts',
-    'Don\'t sheep'
+    'Don\'t sheep',
+    'Remember you can preset your vote to someone else\'s in voting chat, such as "My vote is for whoever Shaggy votes for."',
+    'Don\'t trust Apg'
 ];
 
 var memeCooldown = {};
@@ -333,6 +335,45 @@ function setupRoleInfo() {
     roleFaction['psychic'] = 'town';
     rolePassive['psychic'] = '__[Corruption]__ - \nRevealed Mayors cannot appear in your visions.\n__[Disruption]__ - \nYou will not receive a vision if you are roleblocked, jailed, or fortified.\n__[Future Vision]__ - \nEvery odd-numbered night (1, 3, 5...), you will receive 3 possible evildoers.\n • At least one is a Werewolf member or a Neutral Killing role.\n__[Fortune Telling]__ - \nEvery even-numbered night (2, 4, 6...), you will receive 2 possible Town members.\n • At least one is a Town member. ';
 
+
+    //Town Supportive
+
+
+    roleName['mayor'] = '**Mayor (Supportive) [Unique]**';
+    roleDescription['mayor'] = 'The leader of the Town.';
+    roleFaction['mayor'] = 'town';
+    roleDay['mayor'] = '__[Reveal]__ - \nReveal yourself to the Town. \n • The host confirms your reveal. \n • Once revealed, your votes will be worth twice as much. \n__[Force Lynch]__ - \nForce lynch a target (not yourself). \n • You can only use this ability once.';
+
+    roleName['medium'] = '**Medium (Supportive) [Unique]**';
+    roleDescription['medium'] = 'A maniac claiming to be able to communicate with the dead.';
+    roleFaction['medium'] = 'town';
+    rolePassive['medium'] = '__[Determined]__ - \nYou are redirect immune and roleblock immune. \n__[Communicate]__ - \nYou have access to #graveyard-chat.\n__[Seance]__ - \nSeance a living player. \n • This is a dead ability \n • Today, they may speak in #graveyard-chat. \n • You can only use this ability once.';
+
+    roleName['retributionist'] = '**Retributionist (Supportive) [Unique]**';
+    roleDescription['retributionist'] = 'A ritualist who reanimates dead Town members.';
+    roleFaction['retributionist'] = 'town';
+    rolePassive['retributionist'] = '__[Sharp Mind]__ - \nYou are redirect immune.';
+    roleNight['retributionist'] = '__[Reanimate]__ - \nReanimate a dead Town member. \n • You are able to use your target’s night ability if they have one. \n • If your target ran out of charges for their ability before or on their death, your reanimation will fail. \n • You do not visit your reanimated Town member, but your reanimated Town member will visit your other target (if applicable). \n • Once you reanimate a dead Town member once, their corpse rots and you can no longer reanimate it. \n • You cannot reanimate cleaned people, Town members who are shown as not town, Jailors, Veterans, Builders, Mayors, Mediums, or Vigilantes who committed suicide.';
+
+    roleName['drunk'] = '**Drunk (Supportive)**';
+    roleDescription['drunk'] = 'A person who has fun by messing with people with alcohol.';
+    roleFaction['drunk'] = 'town';
+    rolePassive['drunk'] = '__[I am the Liquor]__ - \nYou are redirect immune and roleblock immune.';
+    roleNight['drunk'] = '__[Debauchery]__ - \nRedirect a target (not yourself) to another target. \n • They know they were redirected and who they were redirected to. \n • If you redirect a target to yourself, you gain night attack immunity against your target. \n • You visit your target, but not the person you redirect your target to.';
+
+    roleName['escort'] = '**Escort (Supportive)**';
+    roleDescription['escort'] = 'A beauty who distracts people.';
+    roleFaction['escort'] = 'town';
+    rolePassive['escort'] = '__[The Real Beauty]__ - \nYou are redirect immune and roleblock immune.';
+    roleNight['escort'] = '__[Distraction]__ - \nRoleblock a target (not yourself).';
+
+    roleName['chronomancer'] = '**Chronomancer (Supportive)**';
+    roleDescription['chronomancer'] = 'A skilled magician who is capable of delaying someone’s death.';
+    roleFaction['chronomancer'] = 'town';
+    roleNight['chronomancer'] = '__[Time Warp]__ - \nWarp a target (not yourself). \n • If that person would have died tonight, their death is delayed by 2 nights. \n • If you delay someone’s death on night 1, they will die night 3. \n • You and your target are notified if you successfully delay their death. \n • Delayed deaths can be healed by Doctors. \n • You cannot delay unpreventable deaths. \n__[Distorted Reality]__ - \nTarget someone. \n • Your target will receive the effects of the earliest delayed death.';
+    roleDay['chronomancer'] = '__[Pocket Dimension]__ - \nIf you were supposed to die tonight, your death will be delayed by 2 nights. \n • You can only use this ability once.';
+
+    //Template
 
     roleName[''] = '';
     roleDescription[''] = '';
