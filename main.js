@@ -15,13 +15,13 @@ var cell;
 
 
 var admins = [
-    '712787148272566372',
-    '593477982761517085',
-    '471875491951935490',
-    '392866251149410305',
-    '301847661181665280',
-    '659487529896116225',
-    '548760440444944386'
+    '712787148272566372', //Shaggy
+    '593477982761517085', //Beako
+    '471875491951935490', //Apg
+    '392866251149410305', //Mqnic
+    '301847661181665280', //Reddid
+    '659487529896116225', //Gazen
+    '548760440444944386'  //rii
 
 
 
@@ -280,6 +280,7 @@ function meme(message) {
 function setupRoleInfo() {
     //TOWN
 
+    //Town Killing
 
     roleName['jailor'] = '**Jailor (Killing) [Unique]**';
     roleDescription['jailor'] = 'A warden officer who detains suspicious people.';
@@ -293,6 +294,8 @@ function setupRoleInfo() {
     roleFaction['veteran'] = 'town';
     rolePassive['veteran'] = '__[War Veteran]__ - \nYou are redirect immune and roleblock immune.';
     roleNight['veteran'] = '__[Alert]__ - \nAttack everyone who visits you. \n • This attack ignores night attack immunity, healing, and protection. \n • You become night attack immune.\n • You are informed of how many visitors you shot.\n • You can only use this ability 3 times.\n__[Snipe]__ - \nSnipe a target (not yourself). If your target attacks tonight, you roleblock and attack them.\n • This attack ignores night attack immunity, healing, and protection. \n • This roleblock bypasses roleblock immunity. \n • You cannot use [Alert] the next night.\n • You can only use this ability twice.';
+
+    //Town Protective
 
     roleName['doctor'] = '**Doctor (Protective)**';
     roleDescription['doctor'] = 'A student who graduated from medical school. ';
@@ -317,6 +320,8 @@ function setupRoleInfo() {
     rolePassive['trapper'] = '__[Catching Fire]__ - \nYou are redirect immune and roleblock immune.\n__[Build]__ - \nIf there are less than two active traps, build one trap tonight.\n • Traps protect your targets from attacks, attacking anyone who tries to attack them.\n - Trap attacks ignore night attack immunity, healing, and protection.\n • There can be only two active traps at any time.\n • Once a trap is triggered, you and your trapped target are notified and the trap is destroyed.\n • If a trapped target dies and their trap is not triggered, it is destroyed.\n__[Imbued Sadness]__ - \nUpon your death, your traps disappear.';
     roleNight['trapper'] = '__[Trap Switch]__ - \nMove a placed trap to someone else.\n__[Sacrificial Woodworking]__ - \nDestroy an active trap and give yourself night attack immunity for tonight.';
     roleDay['trapper'] = '__[Place Trap]__ - \nTrap a target (not yourself).';
+    
+    //Town Investigative
 
     roleName['investigator'] = '**Investigator (Investigative)**';
     roleDescription['investigator'] = 'A detective who specializes in tracking activity during nighttime.';
@@ -328,28 +333,6 @@ function setupRoleInfo() {
     roleFaction['psychic'] = 'town';
     rolePassive['psychic'] = '__[Corruption]__ - \nRevealed Mayors cannot appear in your visions.\n__[Disruption]__ - \nYou will not receive a vision if you are roleblocked, jailed, or fortified.\n__[Future Vision]__ - \nEvery odd-numbered night (1, 3, 5...), you will receive 3 possible evildoers.\n • At least one is a Werewolf member or a Neutral Killing role.\n__[Fortune Telling]__ - \nEvery even-numbered night (2, 4, 6...), you will receive 2 possible Town members.\n • At least one is a Town member. ';
 
-    roleName['shaggy'] = '**Shaggy (Unique)**';
-    roleDescription['shaggy'] = 'The madman who programmed this bot.';
-    roleFaction['shaggy'] = 'town';
-    rolePassive['shaggy'] = '__[Lord of the Sealhmms]__ - \n<:sealhmm:811394376047001621>'
-
-    roleName['hihi'] = '**Hihi/Beatrice (Unique)**';
-    roleDescription['hihi'] = 'She\'s the owner of this server.';
-    roleFaction['hihi'] = 'neutral';
-    roleDay['hihi'] = '__[Nuke]__ - \nNuke the server.\n - You can only nuke a server once.'
-    roleWinCondition['hihi'] = 'Nuke the server';
-
-    roleName['gazen'] = '**Gazen (Neutral Killing)**';
-    roleDescription['gazen'] = 'Milk';
-    roleFaction['gazen'] = 'neutral killing';
-    roleNight['gazen'] = '__[Milk Explosion]__ - \nKill a player\n • This is an unpreventable death\n__[Milk Abuse]__ - \nBlast every player that visits you\n__[Milk Gore]__ - \nIf two players visit you make them go on a rampage, killing two other players.';
-    roleWinCondition['gazen'] = 'Be in the last 4 players.';
-
-    roleName['mafira'] = '**Mafira1071 [Unique]**';
-    roleDescription['mafira'] = 'A troller who is great at imagining fake scenarios.';
-    roleFaction['mafira'] = 'neutral killing';
-    roleDay['mafira'] = '__[Troll]__ - \nMake fun of someone\'s stupid comment.\n • This counts as an attack';
-    roleWinCondition['mafira'] = 'Troll at least 3 people';
 
     roleName[''] = '';
     roleDescription[''] = '';
@@ -501,6 +484,32 @@ function setupRoleInfo() {
     roleDay['enchantress'] = '__[Curse]__ - \nCurse a target (not yourself). \n__[Curse Transfer]__ - \nMove a curse from a cursed player to an uncursed player.\n__[Puppet Magic]__ - \nForce someone to vote for someone else.\n • Both players are unable to vote for the rest of the day.\n • You can only use this ability twice.';
     roleWinCondition['enchantress'] = '`Win condition: Kill all Town and Werewolf roles, or be one of the last four players.`';
 
+    //custom roles
+
+
+    roleName['shaggy'] = '**Shaggy (Unique)**';
+    roleDescription['shaggy'] = 'The madman who programmed this bot.';
+    roleFaction['shaggy'] = 'town';
+    rolePassive['shaggy'] = '__[Lord of the Sealhmms]__ - \n<:sealhmm:811394376047001621>'
+   
+    roleName['hihi'] = '**HiHi/Beatrice (Unique)**';
+    roleDescription['hihi'] = 'She\'s the owner of this server.';
+    roleFaction['hihi'] = 'neutral';
+    roleDay['hihi'] = '__[Nuke]__ - \nNuke the server.\n - You can only nuke a server once.'
+    roleWinCondition['hihi'] = 'Nuke the server';
+   
+    roleName['gazen'] = '**Gazen (Neutral Killing)**';
+    roleDescription['gazen'] = 'Milk';
+    roleFaction['gazen'] = 'neutral killing';
+    roleNight['gazen'] = '__[Milk Explosion]__ - \nKill a player\n • This is an unpreventable death\n__[Milk Abuse]__ - \nBlast every player that visits you\n__[Milk Gore]__ - \nIf two players visit you make them go on a rampage, killing two other players.';
+    roleWinCondition['gazen'] = 'Be in the last 4 players.';
+   
+    roleName['mafira'] = '**Mafira1071 [Unique]**';
+    roleDescription['mafira'] = 'A troller who is great at imagining fake scenarios.';
+    roleFaction['mafira'] = 'neutral killing';
+    roleDay['mafira'] = '__[Troll]__ - \nMake fun of someone\'s stupid comment.\n • This counts as an attack';
+    roleWinCondition['mafira'] = 'Troll at least 3 people';
+   
 }
 
 
