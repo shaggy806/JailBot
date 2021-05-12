@@ -58,7 +58,8 @@ var memes = [
     'https://cdn.discordapp.com/attachments/811318948620009533/837036392936243260/Screenshot_20210427-1801582.png',
     'https://cdn.discordapp.com/attachments/811318948620009533/837039638039363616/Screenshot_2021-04-28_115614.png',
     'https://cdn.discordapp.com/attachments/811318948620009533/838625175158915132/Screenshot_20210427-1801582.png',
-    'https://cdn.discordapp.com/attachments/811318948620009533/838625227318886450/image0.png'
+    'https://cdn.discordapp.com/attachments/811318948620009533/838625227318886450/image0.png',
+    'https://media.discordapp.net/attachments/811318948620009533/842067874684207124/unknown.png'
 ];
 
 var nukeSplashes = [
@@ -122,7 +123,7 @@ client.on("ready", () => {
         activity: {
             name: "Developed by Shaggy, HiHi, and Apg",  // The message shown
             //name: "Happy birthday Mafira!!!",
-            type: "PLAYING" // PLAYING, WATCHING, LISTENING, STREAMING,
+            type: "WATCHING" // PLAYING, WATCHING, LISTENING, STREAMING,
         }
     });
     setupRoleInfo();
@@ -335,7 +336,22 @@ function setupRoleInfo() {
     roleFaction['psychic'] = 'town';
     rolePassive['psychic'] = '__[Corruption]__ - \nRevealed Mayors cannot appear in your visions.\n__[Disruption]__ - \nYou will not receive a vision if you are roleblocked, jailed, or fortified.\n__[Future Vision]__ - \nEvery odd-numbered night (1, 3, 5...), you will receive 3 possible evildoers.\n • At least one is a Werewolf member or a Neutral Killing role.\n__[Fortune Telling]__ - \nEvery even-numbered night (2, 4, 6...), you will receive 2 possible Town members.\n • At least one is a Town member. ';
 
+    roleName['lookout'] = '**Lookout (Investigative)**';
+    roleDescription['lookout'] = 'A camper who lurks to check night activities.';
+    roleFaction['lookout'] = 'town';
+    roleNight['lookout'] = '__[Observe]__ - \nObserve a target (not yourself). \n • You will know everyone who visits your target tonight. \n__[Track]__ - \nTrack a target (not yourself). \n • You will know everyone who is visited by your target tonight.';
 
+    roleName['spy'] = '**Spy (Investigative)**';
+    roleDescription['spy'] = 'A stealth agent who specializes in detecting Werewolf activity.';
+    roleFaction['spy'] = 'town';
+    rolePassive['spy'] = '__[Activity Detector]__ - \nAt the end of every night, you are notified of who was visited by Werewolf members. \n • You will not see these visits if you are roleblocked, jailed, or fortified.';
+    roleNight['spy'] = '__[Little Bug]__ - \nBug a target (not yourself). \n • Tonight, you will know if the target was Attacked, Attacked but Healed, Attacked but Protected, Redirected, Redirected but Immune, Roleblocked, Roleblocked but Immune, Muted, or Muted but Immune.';
+
+    roleName['cupid'] = '**Cupid (Investigative)**';
+    roleDescription['cupid'] = 'A love-a-holic who matches two people to test their compatibility.';
+    roleFaction['cupid'] = 'town';
+    roleNight['cupid'] = '_[Matchmaking]__ - \nMatch a target (not yourself or a revealed Mayor). \n • You do a compatibility test with that target and a predetermined player. \n • For your first test, your predetermined player is randomized and given to you when you receive your role. \n • All subsequent tests will use the last successful target as the predetermined player. \n • You will only visit your targets.\nThe compatibility list is as follows (higher rows take priority): \n ° Pirate: Incompatible with everyone. \n ° Potion Master, Amnesiac, and Guardian Angel: Compatible with everyone. \n ° Headhunter: Compatible with everyone except for their target. \n ° Inquisitor: Compatible with everyone except Heathens. \n ° Fool, Witch, and Medusa: Compatible with non-Town members. \n ° Neutral Killing roles: Compatible with non-Town and non-Werewolf members. \n ° Town members and Werewolf members: Compatible with everyone in their faction.';
+    
     //Town Supportive
 
 
