@@ -354,7 +354,6 @@ function setupRoleInfo() {
     
     //Town Supportive
 
-
     roleName['mayor'] = '**Mayor (Supportive) [Unique]**';
     roleDescription['mayor'] = 'The leader of the Town.';
     roleFaction['mayor'] = 'town';
@@ -402,6 +401,14 @@ function setupRoleInfo() {
 
     //WOLVES
 
+    //Wolf Killing
+
+    roleName['alphawolf'] = '**Alphawolf (Killing) [Unique]**';
+    roleDescription['alphawolf'] = 'The leader of the Werewolf members.';
+    roleFaction['alphawolf'] = 'wolf';
+    rolePassive['alphawolf'] = '';
+    roleNight['alphawolf'] = '';
+    roleDay['alphawolf'] = '';
 
     roleName['wolf apprentice'] = '**Wolf Apprentice (Killing) [Unique]**';
     roleDescription['wolf apprentice'] = 'The Alphawolf’s servile subordinate.';
@@ -589,7 +596,7 @@ function roleInfo(message, n) {
             embed.addField('**Ability (Night):**', roleNight[n]);
         }
         if (roleFaction[n] == 'wolf') {
-            embed.setThumbnail('https://cdn.discordapp.com/attachments/811318948620009533/834935143067680778/wolf.png');
+            embed.setThumbnail('https://media.discordapp.net/attachments/811318948620009533/842248711660371968/felixangry.png');
             embed.setColor('#c92222');
         } else if (roleFaction[n] == 'town') {
             embed.setThumbnail('https://cdn.discordapp.com/attachments/811318948620009533/836465882804781086/811428617946791936.png');
