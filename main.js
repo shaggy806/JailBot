@@ -22,9 +22,6 @@ var admins = [
     '301847661181665280', //Reddid
     '659487529896116225', //Gazen
     '548760440444944386'  //rii
-
-
-
 ];
 
 var memes = [
@@ -129,7 +126,6 @@ client.on("ready", () => {
     setupRoleInfo();
     jailorChat = client.channels.cache.get('833824563967950860');
     cell = client.channels.cache.get('833824574109384724');
-
 });
 
 client.on('message', message => {
@@ -406,9 +402,9 @@ function setupRoleInfo() {
     roleName['alphawolf'] = '**Alphawolf (Killing) [Unique]**';
     roleDescription['alphawolf'] = 'The leader of the Werewolf members.';
     roleFaction['alphawolf'] = 'wolf';
-    rolePassive['alphawolf'] = '';
-    roleNight['alphawolf'] = '';
-    roleDay['alphawolf'] = '';
+    rolePassive['alphawolf'] = '__[Can’t Touch This!]__ - \nYou are night attack immune. \n__[In the Shadows] - \nYou cannot be detected by Investigators. \n__[Promotion]__ - \nWhen you die, another Werewolf is promoted to be the next Alphawolf. \n • If a Wolf Apprentice exists, they take this promotion. \n__[Attack Order]__ - \nIf a Wolf Apprentice exists, they will attack your targets. \n • If the Wolf Apprentice is roleblocked, jailed, or fortified, you will attack your targets, instead.';
+    roleNight['alphawolf'] = '__[Night Hunt]__ - \nAttack a target (not yourself). \n__[2-for-1]__ - \nAttack two targets (not yourself). \n • If you are redirected, only your first target is redirected. \n • This ability can only be used once per game.';
+    roleDay['alphawolf'] = '__[For the Pack]__ - \nSuicide. \n • This ability takes effect after the trial ends (if any occurs). \n • Only the original Alphawolf has this ability.';
 
     roleName['wolf apprentice'] = '**Wolf Apprentice (Killing) [Unique]**';
     roleDescription['wolf apprentice'] = 'The Alphawolf’s servile subordinate.';
@@ -513,13 +509,21 @@ function setupRoleInfo() {
     roleNight['vampire'] = '__[Bite]__ - \nBite a target (not a Vampire).\nThis ability can only be performed by the youngest Vampire.\nOn night one, the youngest Vampire is randomized.\n • If your target is a Town member, they are converted to a Vampire.\n• If four Vampires are alive, this ability attacks them.\n• If your target is a convert immune Town member, they are attacked.\n • If your target is a Neutral role, they are attacked.\n • This ability can be healed and protected against.\n• You can only use this ability every other night.\n • If your target is a Town member who dies tonight, this timer is null.\n• If your target is a Neutral role or you are roleblocked, this timer applies.';
     roleWinCondition['vampire'] = '`Win condition: See the Town members and Neutral Killing eliminated.`';
 
-    roleName[''] = '';
-    roleDescription[''] = '';
-    roleFaction[''] = '';
-    rolePassive[''] = '';
-    roleNight[''] = '';
-    roleDay[''] = '';
-    roleWinCondition[''] = '';
+    roleName['witch'] = '**Witch (Investigative) [Unique]**';
+    roleDescription['witch'] = 'A person who despises the Town and seeks to take revenge with their sorcery.';
+    roleFaction['witch'] = 'neutral';
+    rolePassive['witch'] = '__[Magical Barrier]__ - \nYou are roleblock immune, redirect immune, and have a one-time night attack immunity.';
+    roleNight['witch'] = '__[Control]__ - \nRedirect your target’s ability into someone else. \n • You will learn the roles of both your target and the player your target is redirected to. \n • If any of your 2 targets are jailed or fortified, this ability will fail. \n • If you target a Headhunter or a Guardian Angel, you will also learn their target.  \n__[Life Drain]__ - \nRoleblock your target. \nThe ability your target tried to use will be unusable for the rest of the game. \n • This ability bypasses roleblock immunity. \n • You can only use this ability twice.';
+    roleDay['witch'] = '__[Shut it]__ - \nTarget someone, for the rest of the day: \n • Your target is unable to vote. \n • Your target is muted. \n • You can only use this ability twice. ';
+    roleWinCondition['witch'] = '`Win Condition: See the Town lose. You do not need to be alive in order to win.` ';
+
+    roleName['fool'] = '**Fool/Jester (Supportive)**';
+    roleDescription['fool'] = '';
+    roleFaction['fool'] = '';
+    rolePassive['fool'] = '';
+    roleNight['fool'] = '';
+    roleDay['fool'] = '';
+    roleWinCondition['fool'] = '';
 
     //NEUTRAL KILLING
 
