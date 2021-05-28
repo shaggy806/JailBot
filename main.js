@@ -402,7 +402,7 @@ function setupRoleInfo() {
     roleName['alphawolf'] = '**Alphawolf (Killing) [Unique]**';
     roleDescription['alphawolf'] = 'The leader of the Werewolf members.';
     roleFaction['alphawolf'] = 'wolf';
-    rolePassive['alphawolf'] = '__[Can’t Touch This!]__ - \nYou are night attack immune. \n__[In the Shadows] - \nYou cannot be detected by Investigators. \n__[Promotion]__ - \nWhen you die, another Werewolf is promoted to be the next Alphawolf. \n • If a Wolf Apprentice exists, they take this promotion. \n__[Attack Order]__ - \nIf a Wolf Apprentice exists, they will attack your targets. \n • If the Wolf Apprentice is roleblocked, jailed, or fortified, you will attack your targets, instead.';
+    rolePassive['alphawolf'] = '__[Can’t Touch This!]__ - \nYou are night attack immune. \n__[In the Shadows]__ - \nYou cannot be detected by Investigators. \n__[Promotion]__ - \nWhen you die, another Werewolf is promoted to be the next Alphawolf. \n • If a Wolf Apprentice exists, they take this promotion. \n__[Attack Order]__ - \nIf a Wolf Apprentice exists, they will attack your targets. \n • If the Wolf Apprentice is roleblocked, jailed, or fortified, you will attack your targets, instead.';
     roleNight['alphawolf'] = '__[Night Hunt]__ - \nAttack a target (not yourself). \n__[2-for-1]__ - \nAttack two targets (not yourself). \n • If you are redirected, only your first target is redirected. \n • This ability can only be used once per game.';
     roleDay['alphawolf'] = '__[For the Pack]__ - \nSuicide. \n • This ability takes effect after the trial ends (if any occurs). \n • Only the original Alphawolf has this ability.';
 
